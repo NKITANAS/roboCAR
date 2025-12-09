@@ -7,16 +7,14 @@
 #include "pico/stdlib.h"
 
 #include "constants.hpp"
-#include "drivetrain.hpp"
 
 #pragma endregion
 
-class roboCAR 
+class Ultrasound 
 {
     public:
-        explicit roboCAR();
-        void Periodic();
-        // more stuff
+        explicit Ultrasound();
+        float GetDistance();
     private:
         // Private members
 };

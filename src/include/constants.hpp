@@ -14,15 +14,23 @@
 
 namespace MotorPins
 {
-    //
+    // 
     constexpr auto m_1A = 2;
     constexpr auto m_1B = 3;
     constexpr auto m_2A = 4;
     constexpr auto m_2B = 5;
 }
-namespace UntrasoundPins
+
+#pragma endregion
+
+
+#pragma region Ultrasound Pins
+
+namespace UltrasoundPins
 {
     //
     constexpr auto TRIG = 6;
     constexpr auto ECHO = 7;
 }
+
+#pragma endregion

@@ -1,5 +1,6 @@
 #pragma once
 
+
 #pragma region Includes
 
 #include <iostream>
@@ -10,6 +11,17 @@
 
 #pragma endregion
 
+
+#pragma region Ultrasound Constants
+
+namespace UltrasoundConstants
+{
+    constexpr float SOUND_SPEED = 0.0343; // cm/us
+}
+
+#pragma endregion
+
+
 class Ultrasound 
 {
     public:
@@ -17,4 +29,5 @@ class Ultrasound
         float GetDistance();
     private:
         // Private members
+        
 };

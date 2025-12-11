@@ -7,6 +7,7 @@
 
 Drivetrain RobotDrive;
 Ultrasound RobotUltrasound;
+roboCAR Robot;
 
 #pragma endregion
 
@@ -22,22 +23,27 @@ roboCAR::roboCAR() {
 
 void roboCAR::Periodic(roboCAR &roboCAR) 
 {
-    float UltrasoundDistance = RobotUltrasound.GetDistance();
+    UltrasoundDistance = RobotUltrasound.GetDistance();
     // Assume the Ultrasound distance is in centimeters
     if (UltrasoundTurnActive) 
     {
-        RobotDrive.Drive(DrivetrainConstants::BACKWARD);                // Turn left while obstacle is detected
-        if (UltrasoundDistance > 40.0) {                               // If obstacle is cleared
-            RobotDrive.Drive(DrivetrainConstants::LEFTBACKWARD);
-            if (UltrasoundDistance > 100.0) {
-                roboCAR.UltrasoundTurnActive = false;                   // Resume normal operation
+        RobotDrive.Drive(DrivetrainConstants::BACKWARD);                // Initially back up
+        if (UltrasoundDistance > 40.0) 
+        {                               
+            RobotDrive.Drive(DrivetrainConstants::LEFTBACKWARD);        // Then turn left while backing up
+            if (UltrasoundDistance > 100.0) 
+            {
+                UltrasoundTurnActive = false;                           // Resume normal operation
             }
         }
     } 
-    else if (UltrasoundDistance < 20.0) {     
+    else if (UltrasoundDistance < 20.0) 
+    {     
         roboCAR.UltrasoundTurnActive = true;                            // If an obstacle is closer than 20 cm
         RobotDrive.Drive(DrivetrainConstants::STOP);
-    } else {
+    } 
+    else 
+    {
         RobotDrive.Drive(DrivetrainConstants::FORWARD);
     }
 
@@ -67,10 +73,11 @@ void roboCAR::Initialize()
 
 
 #pragma region MainLoop
-int main() {
-    roboCAR Robot;
+int main() 
+{
     Robot.Initialize();
-    while (true) {
+    while (true) 
+    {
         Robot.Periodic(Robot);
     }
     return 0;

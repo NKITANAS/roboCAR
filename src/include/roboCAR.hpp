@@ -22,4 +22,6 @@ class roboCAR
     private:
         // Private members
         bool UltrasoundTurnActive = false;
+        float UltrasoundDistance = 0.0;
+
 };
